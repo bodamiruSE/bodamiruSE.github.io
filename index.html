@@ -1,260 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="BodamiruSE - Personal digital garden of Abdulrahman Amir (Abdulrahman El-Qawi), known as RYXOR and bodamiruSE. Systems developer, Linux enthusiast.">
-    <meta name="keywords" content="ryxor, 3bdo amir, 3bdo Amir, عبدالرحمن أمير , الباكو, elbaku, elbako, El-Baku, El-Bako,RYXOR, bodamiruSE, Abdulrahman Amir, Abdulrahman El-Qawi, عبده أمير, عبده الجاوي">
-    <meta name="author" content="Abdulrahman Amir">
-    <title>BodamiruSE</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maintenance Mode</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    overflow:hidden;
+    height:100vh;
+    background:
+        radial-gradient(circle at top,#6d28d9 0%,#0f172a 40%,#020617 100%);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    position:relative;
+}
+
+.stars{
+    position:absolute;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+.star{
+    position:absolute;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{opacity:.2;}
+    to{opacity:1;}
+}
+
+.anime-glow{
+    position:absolute;
+    width:600px;
+    height:600px;
+    border-radius:50%;
+    background:radial-gradient(circle,
+        rgba(168,85,247,.35),
+        rgba(99,102,241,.08),
+        transparent 70%);
+    filter:blur(20px);
+    animation:float 6s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-20px);}
+}
+
+.container{
+    position:relative;
+    z-index:10;
+    text-align:center;
+    max-width:900px;
+    padding:30px;
+}
+
+.logo{
+    font-size:90px;
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.08);}
+}
+
+h1{
+    font-size:3rem;
+    margin-top:10px;
+    text-shadow:0 0 25px #a855f7;
+}
+
+.message{
+    margin-top:25px;
+    font-size:1.4rem;
+    min-height:70px;
+    transition:.4s;
+    color:#e2e8f0;
+}
+
+.subtitle{
+    margin-top:15px;
+    opacity:.8;
+}
+
+.line{
+    width:180px;
+    height:4px;
+    margin:25px auto;
+    border-radius:999px;
+    background:linear-gradient(90deg,#a855f7,#60a5fa);
+    box-shadow:0 0 20px #a855f7;
+}
+
+.footer{
+    margin-top:30px;
+    opacity:.7;
+    font-size:.9rem;
+}
+
+.anime-circle{
+    position:absolute;
+    width:420px;
+    height:420px;
+    border:2px solid rgba(255,255,255,.08);
+    border-radius:50%;
+    animation:spin 30s linear infinite;
+}
+
+.anime-circle::before{
+    content:"";
+    position:absolute;
+    inset:20px;
+    border-radius:50%;
+    border:1px solid rgba(168,85,247,.2);
+}
+
+@keyframes spin{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+
+@media(max-width:768px){
+    h1{
+        font-size:2rem;
+    }
+
+    .logo{
+        font-size:65px;
+    }
+
+    .message{
+        font-size:1.1rem;
+    }
+}
+</style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="nav-logo">BodamiruSE</div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#journey">Journey</a></li>
-            <li><a href="#lab">Lab</a></li>
-            <li><a href="#learning">Learning</a></li>
-            <li><a href="#blog">Blog</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#thoughts">Thoughts</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+<div class="stars" id="stars"></div>
+<div class="anime-glow"></div>
+<div class="anime-circle"></div>
+
+<div class="container">
+
+    <div class="logo">⚔️</div>
+
+    <h1>UNDER MAINTENANCE</h1>
+
+    <div class="line"></div>
+
+    <div class="message" id="message">
+        Loading...
     </div>
-    </nav>
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-text">
-            <p class="hero-welcome">Welcome to my digital garden</p>
-            <h1 class="hero-title">I was there...<br><span>And now I'm in front of you.</span></h1>
-            <p class="hero-desc">The sparrow used to flap its wings, peck here and there, and I didn't know what I know today, but I was able to learn what I would need tomorrow.</p>
-            <a href="#journey" class="hero-btn">Explore the journey</a>
-        </div>
-        <div class="hero-img">
-            <img src="hero.jpg" alt="hero">
-        </div>
-    </section>
-    <!-- Beliefs Section -->
-    <section class="beliefs" id="beliefs">
-        <div class="beliefs-header">
-            <h2>What I Believe In</h2>
-            <p>The principles that guide me</p>
-        </div>
-        <div class="beliefs-cards">
-            <div class="belief-card">
-                <span class="belief-icon">🤍</span>
-               <h3>Honesty</h3>
-               <p>I believe in being honest with myself and others, because honesty is the foundation of everything.</p>
-            </div>
-            <div class="belief-card">
-                <span class="belief-icon">🪐</span>
-                <h3>Curiosity</h3>
-                <p>I always ask "why" and "how", because curiosity is the art of going deeper to understand.</p>
-            </div>
-            <div class="belief-card">
-                <span class="belief-icon">📖</span>
-                <h3>Learning</h3>
-                <p>Every day I learn something new, and I try to be better than yesterday.</p>
-            </div>
-        </div>
-    </section>
-    <!-- Journey Section -->
-<section class="journey" id="journey">
-    <div class="journey-header">
-        <h2>My Journey</h2>
-        <p>Explore different parts of the journey</p>
+
+    <div class="subtitle">
+        We are improving the experience and will be back soon.
     </div>
-    <div class="timeline">
-        <div class="timeline-item">
-            <div class="timeline-year">2017</div>
-            <div class="timeline-content">
-                <h3>First Contact With Technology</h3>
-                <p>Built my first device and tried to understand everything inside it.</p>
-            </div>
-        </div>
-        <div class="timeline-item">
-            <div class="timeline-year">2018</div>
-            <div class="timeline-content">
-                <h3>Discovering The Web</h3>
-                <p>Built my first simple website and saw the real journey begin.</p>
-            </div>
-        </div>
-        <div class="timeline-item">
-            <div class="timeline-year">2020</div>
-            <div class="timeline-content">
-                <h3>Systems & Android</h3>
-                <p>Explored Android internals, custom ROMs and the world of open systems.</p>
-            </div>
-        </div>
-        <div class="timeline-item">
-            <div class="timeline-year">2022</div>
-            <div class="timeline-content">
-                <h3>Linux</h3>
-                <p>Went deep into Linux and open source systems.</p>
-            </div>
-        </div>
-        <div class="timeline-item">
-            <div class="timeline-year">2024</div>
-            <div class="timeline-content">
-                <h3>Full Stack</h3>
-                <p>Started building complete applications and understanding the full picture.</p>
-            </div>
-        </div>
-        <div class="timeline-item">
-            <div class="timeline-year">2026</div>
-            <div class="timeline-content">
-                <h3>Building My Identity</h3>
-                <p>Building this place to share the journey and inspire others.</p>
-            </div>
-        </div>
+
+    <div class="footer">
+        ✨ Anime Inspired Maintenance Screen ✨
     </div>
-</section>
-<!-- Blog Section -->
-<section class="blog" id="blog">
-    <div class="blog-header">
-        <div>
-            <h2>From The Blog</h2>
-            <p>Latest from the blog</p>
-        </div>
-        <a href="#" class="view-all">View all posts →</a>
-    </div>
-    <div class="blog-cards">
-        <a href="blog-post.html" class="blog-card">
-            <div class="blog-img" style="background: #1a1a2e;"></div>
-            <div class="blog-info">
-                <span class="blog-tag">Learning</span>
-                <span class="blog-read">5 min read</span>
-            </a>
-            <h3>How I Learn Any New Technology</h3>
-            <p>The steps and approaches I use to learn anything faster and deeper.</p>
-            <span class="blog-date">Jun 10, 2026</span>
-        </div>
-        <div class="blog-card">
-            <div class="blog-img" style="background: #0d1b2a;"></div>
-            <div class="blog-info">
-                <span class="blog-tag">Web Dev</span>
-                <span class="blog-read">8 min read</span>
-            </div>
-            <h3>Building a Complete App with Next.js</h3>
-            <p>From idea to publish, everything I learned building a full project.</p>
-            <span class="blog-date">Jun 3, 2026</span>
-        </div>
-        <div class="blog-card">
-            <div class="blog-img" style="background: #1a0a2e;"></div>
-            <div class="blog-info">
-                <span class="blog-tag">Thoughts</span>
-                <span class="blog-read">4 min read</span>
-            </div>
-            <h3>Why I Write What I Learn</h3>
-            <p>Writing is the best way to confirm understanding and help others.</p>
-            <span class="blog-date">May 28, 2026</span>
-        </div>
-    </div>
-</section>
-    <!-- Projects Section -->
-<section class="projects" id="projects">
-    <div class="projects-header">
-        <div>
-            <h2>My Projects</h2>
-            <p>Things I built and shipped</p>
-        </div>
-        <a href="https://github.com/bodamiruSE" class="view-all">View all on GitHub →</a>
-    </div>
-    <div class="projects-cards">
-        <div class="project-card">
-            <div class="project-top">
-                <span class="project-icon">🖥️</span>
-                <a href="https://github.com/bodamiruSE/ram-monitor" class="project-link">↗</a>
-            </div>
-            <h3>RAM Monitor</h3>
-            <p>A lightweight RAM monitoring tool for Android/Termux that alerts when memory is critically high.</p>
-            <div class="project-tags">
-                <span>Python</span>
-                <span>Termux</span>
-                <span>Android</span>
-            </div>
-        </div>
-        <div class="project-card">
-            <div class="project-top">
-                <span class="project-icon">⚙️</span>
-                <a href="https://github.com/bodamiruSE/my-first-.dotfiles" class="project-link">↗</a>
-            </div>
-            <h3>Termux Dotfiles</h3>
-            <p>Personal Termux development environment powered by Neovim, Fish, Tmux and nnn.</p>
-            <div class="project-tags">
-                <span>Linux</span>
-                <span>Termux</span>
-                <span>Shell</span>
-            </div>
-        </div>
-        <div class="project-card">
-            <div class="project-top">
-                <span class="project-icon">🌐</span>
-                <a href="#" class="project-link">↗</a>
-            </div>
-            <h3>BodamiruSE</h3>
-            <p>My personal digital garden, built from scratch with HTML, CSS and JavaScript.</p>
-            <div class="project-tags">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-            </div>
-        </div>
-    </div>
-</section>
-    <!-- Contact Section -->
-<section class="contact" id="contact">
-    <div class="contact-header">
-        <h2>Get In Touch</h2>
-        <p>Let's build something together</p>
-    </div>
-    <div class="contact-content">
-        <div class="contact-links">
-            <a href="https://github.com/bodamiruSE" class="contact-link">
-                <span class="contact-icon">🐙</span>
-                <div>
-                    <h3>GitHub</h3>
-                    <p>github.com/bodamiruSE</p>
-                </div>
-            </a>
-            <a href="mailto:bodamiruse@gmail.com" class="contact-link">
-                <span class="contact-icon">📧</span>
-                <div>
-                    <h3>Email</h3>
-                    <p>bodamiruse@gmail.com</p>
-                </div>
-            </a>
-            <a href="https://wa.me/201278716881" class="contact-link">
-                <span class="contact-icon">🍃</span>
-                <div>
-                    <h3>WhatsApp</h3>
-                    <p>+201278716881</p>
-                </div>
-            </a>
-        </div>
-    </div>
-</section>
-    <!-- Footer -->
-<footer class="footer">
-    <div class="footer-content">
-        <div class="footer-logo">BodamiruSE</div>
-        <p class="footer-text">Built with curiosity, powered by Linux.</p>
-        <div class="footer-links">
-            <a href="https://github.com/bodamiruSE">GitHub</a>
-            <a href="#blog">Blog</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <p class="footer-copy">© 2026 BodamiruSE. All rights reserved.</p>
-    </div>
-</footer>
-    <script src="script.js"></script>
+
+</div>
+
+<script>
+
+// Anime-like stars
+const stars = document.getElementById("stars");
+
+for(let i=0;i<120;i++){
+    const star = document.createElement("div");
+    star.className = "star";
+
+    const size = Math.random()*3+1;
+
+    star.style.width = size+"px";
+    star.style.height = size+"px";
+    star.style.left = Math.random()*100+"%";
+    star.style.top = Math.random()*100+"%";
+    star.style.animationDuration = (Math.random()*4+2)+"s";
+
+    stars.appendChild(star);
+}
+
+// Maintenance in many languages
+const languages = [
+"🔧 Website Under Maintenance",
+"🔧 الموقع تحت الصيانة",
+"🔧 Site en maintenance",
+"🔧 Sitio en mantenimiento",
+"🔧 Sito in manutenzione",
+"🔧 Website in onderhoud",
+"🔧 Wartungsarbeiten laufen",
+"🔧 Site em manutenção",
+"🔧 Сайт на обслуживании",
+"🔧 网站维护中",
+"🔧 網站維護中",
+"🔧 サイトはメンテナンス中です",
+"🔧 사이트 점검 중입니다",
+"🔧 साइट रखरखाव में है",
+"🔧 সাইট রক্ষণাবেক্ষণে আছে",
+"🔧 Situs sedang dalam pemeliharaan",
+"🔧 Laman sedang diselenggara",
+"🔧 Trang web đang bảo trì",
+"🔧 เว็บไซต์กำลังปรับปรุง",
+"🔧 Site sedang diperbaiki",
+"🔧 האתר בתחזוקה",
+"🔧 الموقع قيد الصيانة",
+"🔧 Web sitesi bakımda",
+"🔧 Strona w konserwacji",
+"🔧 Stránka je v údržbě",
+"🔧 Stránka je v údržbe",
+"🔧 Oldal karbantartás alatt",
+"🔧 Site-ul este în mentenanță",
+"🔧 Сайт в процесі обслуговування",
+"🔧 Sajt je na održavanju",
+"🔧 Spletna stran je v vzdrževanju",
+"🔧 Saidi hooldatakse",
+"🔧 Tīmekļa vietne tiek uzturēta",
+"🔧 Svetainė prižiūrima",
+"🔧 Viðhald á vefsíðu",
+"🔧 Nettsted under vedlikehold",
+"🔧 Webbplats under underhåll",
+"🔧 Verkkosivusto huollossa",
+"🔧 Ιστότοπος υπό συντήρηση"
+];
+
+const message = document.getElementById("message");
+let index = 0;
+
+function rotateLanguages(){
+    message.style.opacity = 0;
+
+    setTimeout(()=>{
+        message.textContent = languages[index];
+        message.style.opacity = 1;
+        index = (index + 1) % languages.length;
+    },300);
+}
+
+rotateLanguages();
+setInterval(rotateLanguages,2500);
+
+</script>
+
 </body>
 </html>
