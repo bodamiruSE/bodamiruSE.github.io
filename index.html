@@ -1,868 +1,257 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BodamiruSE | Under Maintenance</title>
-    
-    <!-- ==================== STYLES ==================== -->
-    <style>
-        /* ============================================
-           RESET & BASE
-           ============================================ */
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* ============================================
-           DESIGN TOKENS — SYSTEM VARIABLES
-           ============================================ */
-        :root {
-            /* ----- 1. PRIMITIVES (القيم الخام) ----- */
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-200: #e5e7eb;
-            --gray-300: #d1d5db;
-            --gray-400: #9ca3af;
-            --gray-500: #6b7280;
-            --gray-600: #4b5563;
-            --gray-700: #374151;
-            --gray-800: #1f2937;
-            --gray-900: #111827;
-            --gray-950: #030712;
-
-            --blue-50: #eff6ff;
-            --blue-100: #dbeafe;
-            --blue-200: #bfdbfe;
-            --blue-300: #93c5fd;
-            --blue-400: #60a5fa;
-            --blue-500: #3b82f6;
-            --blue-600: #2563eb;
-            --blue-700: #1d4ed8;
-            --blue-800: #1e40af;
-            --blue-900: #1e3a8a;
-            --blue-950: #172554;
-
-            --photon-50: #f5f3ff;
-            --photon-100: #ede9fe;
-            --photon-200: #ddd6fe;
-            --photon-300: #c4b5fd;
-            --photon-400: #a78bfa;
-            --photon-500: #8b5cf6;
-            --photon-600: #7c3aed;
-            --photon-700: #6d28d9;
-            --photon-800: #5b21b6;
-            --photon-900: #4c1d95;
-            --photon-950: #2e1065;
-
-            --red-50: #fef2f2;
-            --red-100: #fee2e2;
-            --red-200: #fecaca;
-            --red-300: #fca5a5;
-            --red-400: #f87171;
-            --red-500: #ef4444;
-            --red-600: #dc2626;
-            --red-700: #b91c1c;
-            --red-800: #991b1b;
-            --red-900: #7f1d1d;
-            --red-950: #450a0a;
-
-            --green-50: #ecfdf5;
-            --green-100: #d1fae5;
-            --green-200: #a7f3d0;
-            --green-300: #6ee7b7;
-            --green-400: #34d399;
-            --green-500: #10b981;
-            --green-600: #059669;
-            --green-700: #047857;
-            --green-800: #065f46;
-            --green-900: #064e3b;
-            --green-950: #022c22;
-
-            --yellow-50: #fffbeb;
-            --yellow-100: #fef3c7;
-            --yellow-200: #fde68a;
-            --yellow-300: #fcd34d;
-            --yellow-400: #fbbf24;
-            --yellow-500: #f59e0b;
-            --yellow-600: #d97706;
-            --yellow-700: #b45309;
-            --yellow-800: #92400e;
-            --yellow-900: #78350f;
-            --yellow-950: #451a03;
-
-            /* المسافات */
-            --space-0: 0px;
-            --space-px: 1px;
-            --space-0_5: 2px;
-            --space-1: 4px;
-            --space-1_5: 6px;
-            --space-2: 8px;
-            --space-2_5: 10px;
-            --space-3: 12px;
-            --space-3_5: 14px;
-            --space-4: 16px;
-            --space-5: 20px;
-            --space-6: 24px;
-            --space-7: 28px;
-            --space-8: 32px;
-            --space-9: 36px;
-            --space-10: 40px;
-            --space-11: 44px;
-            --space-12: 48px;
-            --space-14: 56px;
-            --space-16: 64px;
-            --space-20: 80px;
-            --space-24: 96px;
-            --space-28: 112px;
-            --space-32: 128px;
-            --space-36: 144px;
-            --space-40: 160px;
-            --space-44: 176px;
-            --space-48: 192px;
-            --space-52: 208px;
-            --space-56: 224px;
-            --space-60: 240px;
-            --space-64: 256px;
-            --space-72: 288px;
-            --space-80: 320px;
-            --space-96: 384px;
-
-            --space-n1: -4px;
-            --space-n2: -8px;
-            --space-n3: -12px;
-            --space-n4: -16px;
-            --space-n6: -24px;
-            --space-n8: -32px;
-
-            /* الطباعة */
-            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-            --font-display: 'Space Grotesk', var(--font-sans);
-            --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-
-            --text-xs: 0.75rem;
-            --text-sm: 0.875rem;
-            --text-base: 1rem;
-            --text-lg: 1.125rem;
-            --text-xl: 1.25rem;
-            --text-2xl: 1.5rem;
-            --text-3xl: 1.875rem;
-            --text-4xl: 2.25rem;
-            --text-5xl: 3rem;
-            --text-6xl: 3.75rem;
-            --text-7xl: 4.5rem;
-            --text-8xl: 6rem;
-            --text-9xl: 8rem;
-
-            --leading-none: 1;
-            --leading-tight: 1.15;
-            --leading-snug: 1.35;
-            --leading-normal: 1.6;
-            --leading-relaxed: 1.75;
-            --leading-loose: 2;
-
-            --tracking-tighter: -0.05em;
-            --tracking-tight: -0.025em;
-            --tracking-normal: 0em;
-            --tracking-wide: 0.025em;
-            --tracking-wider: 0.05em;
-            --tracking-widest: 0.1em;
-
-            --radius-none: 0px;
-            --radius-sm: 4px;
-            --radius-base: 6px;
-            --radius-md: 8px;
-            --radius-lg: 12px;
-            --radius-xl: 16px;
-            --radius-2xl: 24px;
-            --radius-3xl: 32px;
-            --radius-full: 9999px;
-
-            --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-            --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-            --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
-
-            --breakpoint-sm: 640px;
-            --breakpoint-md: 768px;
-            --breakpoint-lg: 1024px;
-            --breakpoint-xl: 1280px;
-            --breakpoint-2xl: 1536px;
-
-            --container-query-sm: 40ch;
-            --container-query-md: 60ch;
-            --container-query-lg: 80ch;
-
-            --z-index-below: -1;
-            --z-index-base: 0;
-            --z-index-raised: 10;
-            --z-index-dropdown: 100;
-            --z-index-sticky: 200;
-            --z-index-overlay: 300;
-            --z-index-modal: 400;
-            --z-index-popover: 500;
-            --z-index-tooltip: 600;
-            --z-index-toast: 700;
-            --z-index-top: 9999;
-
-            --transition-duration-instant: 0ms;
-            --transition-duration-fast: 150ms;
-            --transition-duration-base: 250ms;
-            --transition-duration-slow: 350ms;
-            --transition-duration-slower: 500ms;
-
-            --ease-linear: cubic-bezier(0, 0, 1, 1);
-            --ease-in: cubic-bezier(0.4, 0, 1, 1);
-            --ease-out: cubic-bezier(0, 0, 0.2, 1);
-            --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-            --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
-            --transition-fast: all var(--transition-duration-fast) var(--ease-out);
-            --transition-base: all var(--transition-duration-base) var(--ease-in-out);
-            --transition-slow: all var(--transition-duration-slow) var(--ease-in);
-            --transition-bounce: all var(--transition-duration-slower) var(--ease-bounce);
-
-            /* ----- 2. SEMANTICS (المتغيرات الدلالية) ----- */
-            --color-background: var(--gray-950);
-            --color-background-raised: #0D1117;
-            --color-background-inverse: var(--gray-50);
-            --color-surface: #151820;
-            --color-surface-raised: #1C2030;
-            --color-surface-inverse: var(--gray-200);
-            --color-border: #242840;
-            --color-border-strong: #3D4A6B;
-
-            --color-text-primary: #DCE0F0;
-            --color-text-secondary: #7888A0;
-            --color-text-tertiary: #4A4560;
-            --color-text-inverse: #1A1D2E;
-            --color-text-placeholder: #4A4560;
-
-            --color-accent: var(--photon-400);
-            --color-accent-hover: var(--photon-300);
-            --color-accent-active: var(--photon-500);
-            --color-accent-dim: #1A1535;
-
-            --color-success: var(--green-400);
-            --color-success-dim: var(--green-950);
-            --color-warning: var(--yellow-400);
-            --color-warning-dim: var(--yellow-950);
-            --color-error: var(--red-400);
-            --color-error-dim: var(--red-950);
-            --color-info: var(--blue-400);
-            --color-info-dim: var(--blue-950);
-
-            --spacing-component-padding: var(--space-4);
-            --spacing-component-gap: var(--space-2);
-            --spacing-section-gap: var(--space-16);
-            --spacing-section-padding: var(--space-12);
-            --spacing-container-padding: var(--space-4);
-            --spacing-stack-sm: var(--space-2);
-            --spacing-stack-base: var(--space-4);
-            --spacing-stack-lg: var(--space-8);
-
-            --font-family-base: var(--font-sans);
-            --font-family-display: var(--font-display);
-            --font-family-mono: var(--font-mono);
-
-            --text-body: var(--text-base);
-            --text-body-small: var(--text-sm);
-            --text-body-large: var(--text-lg);
-            --text-heading: var(--text-2xl);
-            --text-display: var(--text-5xl);
-
-            --border-radius-element: var(--radius-md);
-            --border-radius-card: var(--radius-lg);
-            --border-radius-modal: var(--radius-xl);
-            --shadow-element: var(--shadow-sm);
-            --shadow-card: var(--shadow-md);
-            --shadow-modal: var(--shadow-xl);
-
-            /* ----- 3. COMPONENT VARIABLES ----- */
-            --button-background: var(--color-accent);
-            --button-background-hover: var(--color-accent-hover);
-            --button-color: var(--color-background);
-            --button-padding-x: var(--space-4);
-            --button-padding-y: var(--space-2);
-            --button-font-size: var(--text-sm);
-            --button-font-weight: 600;
-            --button-border-radius: var(--border-radius-element);
-            --button-gap: var(--space-2);
-
-            --card-background: var(--color-surface);
-            --card-border: 1px solid var(--color-border);
-            --card-border-radius: var(--border-radius-card);
-            --card-padding: var(--spacing-component-padding);
-            --card-shadow: var(--shadow-card);
-            --card-title-font-size: var(--text-xl);
-            --card-title-font-weight: 700;
-
-            --input-background: var(--color-surface);
-            --input-border: 1px solid var(--color-border);
-            --input-border-radius: var(--radius-md);
-            --input-padding: var(--space-3) var(--space-4);
-            --input-font-size: var(--text-sm);
-            --input-min-height: 44px;
-
-            --container-max-width: var(--breakpoint-2xl);
-            --container-padding: var(--space-4);
-
-            --opacity-disabled: 0.5;
-            --opacity-hover: 0.8;
-            --opacity-overlay: 0.6;
-
-            --focus-ring: 0 0 0 3px var(--color-accent-dim), 0 0 0 1px var(--color-accent);
-            --print-font-size: 12pt;
-        }
-
-        /* ============================================
-           FOCUS VISIBLE
-           ============================================ */
-        *:focus-visible {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 2px;
-            border-radius: var(--radius-sm);
-        }
-        *:focus {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 2px;
-            border-radius: var(--radius-sm);
-        }
-        *:focus:not(:focus-visible) {
-            outline: none;
-        }
-
-        .btn:focus-visible,
-        input:focus-visible,
-        button:focus-visible,
-        textarea:focus-visible,
-        select:focus-visible,
-        a:focus-visible {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 2px;
-        }
-
-        /* ============================================
-           GLOBAL STYLES
-           ============================================ */
-        html {
-            scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        body {
-            font-family: var(--font-family-base);
-            background-color: var(--color-background);
-            color: var(--color-text-primary);
-            line-height: var(--leading-normal);
-            transition: background-color var(--transition-duration-base) ease,
-                color var(--transition-duration-base) ease;
-            min-height: 100vh;
-        }
-
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--color-surface);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--color-border);
-            border-radius: var(--radius-full);
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--color-accent);
-        }
-
-        /* ============================================
-           CONTAINER
-           ============================================ */
-        .container {
-            width: 100%;
-            max-width: var(--container-max-width);
-            padding: 0 var(--container-padding);
-            margin: 0 auto;
-        }
-
-        @media (min-width: 640px) {
-            .container {
-                padding: 0 var(--space-6);
-            }
-        }
-        @media (min-width: 1024px) {
-            .container {
-                padding: 0 var(--space-8);
-            }
-        }
-
-        /* ============================================
-           UTILITY CLASSES
-           ============================================ */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
-        }
-
-        .flex {
-            display: flex;
-        }
-        .flex-col {
-            flex-direction: column;
-        }
-        .items-center {
-            align-items: center;
-        }
-        .justify-between {
-            justify-content: space-between;
-        }
-        .gap-2 {
-            gap: var(--space-2);
-        }
-        .gap-3 {
-            gap: var(--space-3);
-        }
-        .gap-4 {
-            gap: var(--space-4);
-        }
-        .gap-6 {
-            gap: var(--space-6);
-        }
-        .gap-8 {
-            gap: var(--space-8);
-        }
-
-        .text-center {
-            text-align: center;
-        }
-        .text-secondary {
-            color: var(--color-text-secondary);
-        }
-        .text-photon {
-            color: var(--color-accent);
-        }
-
-        .mt-4 {
-            margin-top: var(--space-4);
-        }
-        .mt-6 {
-            margin-top: var(--space-6);
-        }
-        .mt-8 {
-            margin-top: var(--space-8);
-        }
-        .mb-4 {
-            margin-bottom: var(--space-4);
-        }
-        .mb-6 {
-            margin-bottom: var(--space-6);
-        }
-
-        /* ============================================
-           BUTTONS
-           ============================================ */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--button-gap);
-            padding: var(--button-padding-y) var(--button-padding-x);
-            font-family: var(--font-family-base);
-            font-weight: var(--button-font-weight);
-            font-size: var(--button-font-size);
-            border-radius: var(--button-border-radius);
-            border: 1px solid transparent;
-            cursor: pointer;
-            transition: var(--transition-fast);
-            text-align: center;
-            line-height: 1.4;
-            text-decoration: none;
-            min-height: var(--input-min-height);
-            user-select: none;
-        }
-
-        .btn-primary {
-            background-color: var(--button-background);
-            color: var(--button-color);
-            border-color: var(--button-background);
-        }
-        .btn-primary:hover {
-            background-color: var(--button-background-hover);
-            border-color: var(--button-background-hover);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
-        }
-        .btn-primary:active {
-            transform: translateY(0);
-            box-shadow: var(--shadow-sm);
-        }
-        .btn-primary:disabled {
-            opacity: var(--opacity-disabled);
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--color-text-primary);
-            border-color: var(--color-border);
-        }
-        .btn-outline:hover {
-            border-color: var(--color-accent);
-            color: var(--color-accent);
-            background: var(--color-accent-dim);
-        }
-        .btn-outline:disabled {
-            opacity: var(--opacity-disabled);
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        /* ============================================
-           NAV
-           ============================================ */
-        .navbar {
-            width: 100%;
-            padding: var(--space-4) 0;
-            background-color: var(--color-background);
-            border-bottom: 1px solid var(--color-border);
-            position: sticky;
-            top: 0;
-            z-index: var(--z-index-sticky);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            background-color: rgba(13, 17, 23, 0.85);
-        }
-
-        .nav-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: var(--space-4);
-        }
-
-        .nav-logo {
-            font-family: var(--font-family-display);
-            font-weight: 700;
-            font-size: var(--text-xl);
-            letter-spacing: var(--tracking-tight);
-            color: var(--color-text-primary);
-            text-decoration: none;
-            transition: color var(--transition-duration-fast) ease;
-        }
-        .nav-logo:hover {
-            color: var(--color-accent);
-        }
-        .nav-logo span {
-            color: var(--color-accent);
-        }
-
-        /* ============================================
-           HERO
-           ============================================ */
-        .hero {
-            padding: var(--space-20) 0 var(--space-16);
-            text-align: center;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .hero-eyebrow {
-            font-family: var(--font-family-mono);
-            font-size: var(--text-xs);
-            font-weight: 400;
-            letter-spacing: var(--tracking-wider);
-            text-transform: uppercase;
-            color: var(--color-accent);
-            margin-bottom: var(--space-4);
-            display: inline-block;
-            padding: var(--space-1) var(--space-3);
-            border-radius: var(--radius-full);
-            background: var(--color-accent-dim);
-        }
-
-        .hero h1 {
-            font-family: var(--font-family-base);
-            font-weight: 800;
-            font-size: var(--text-5xl);
-            line-height: var(--leading-tight);
-            letter-spacing: var(--tracking-tight);
-            margin-bottom: var(--space-4);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* ============================================
-           FOOTER
-           ============================================ */
-        .footer {
-            padding: var(--space-12) 0 var(--space-8);
-            border-top: 1px solid var(--color-border);
-            width: 100%;
-        }
-
-        .footer-inner {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: var(--space-6);
-        }
-
-        /* ============================================
-           RESPONSIVE
-           ============================================ */
-        @media (max-width: 768px) {
-            .hero {
-                padding: var(--space-16) 0 var(--space-12);
-            }
-            .hero h1 {
-                font-size: var(--text-3xl);
-            }
-        }
-
-        /* ============================================
-           PAGE-SPECIFIC STYLES
-           ============================================ */
-        .typing-wrapper {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 80px;
-        }
-
-        #typing-text {
-            white-space: nowrap;
-            overflow: hidden;
-            display: inline-block;
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 3px;
-            height: 1.2em;
-            background: var(--color-accent);
-            margin-left: 4px;
-            animation: blink 1s step-end infinite;
-            vertical-align: text-bottom;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .particles-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .message-box {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-            color: var(--color-text-secondary);
-            font-size: var(--text-sm);
-            line-height: var(--leading-relaxed);
-        }
-
-        .whatsapp-link {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-2);
-            margin-top: var(--space-4);
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>bodamiruSE — System Architect</title>
+<meta name="description" content="Arch + Hyprland wizard. Anime-powered system architect. Terminal-first developer." />
+<style>
+:root{--bg:#06090f;--bg-2:#0a0f18;--panel:rgba(12,19,30,.72);--green:#00ff9c;--cyan:#22d3ee;--pink:#ff2d78;--amber:#ffb86b;--purple:#a78bfa;--text:#d4e0ec;--muted:#64748b;--border:rgba(0,255,156,.16);--glow:0 0 20px rgba(0,255,156,.28);--radius:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"Fira Code","Cascadia Code","JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;line-height:1.65;min-height:100vh;overflow-x:hidden}
+::selection{background:var(--green);color:#04120c}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--bg-2)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--green),var(--cyan));border-radius:5px}
+#matrix{position:fixed;inset:0;z-index:0;opacity:.22;pointer-events:none}
+.wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 20px 80px}
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(6,9,15,.7);border-bottom:1px solid var(--border)}
+.nav{max-width:1080px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:18px}
+.brand{color:var(--green);font-weight:700;letter-spacing:1px;white-space:nowrap;text-shadow:var(--glow)}
+.brand::before{content:"$ ";color:var(--pink)}
+.nav a{color:var(--muted);text-decoration:none;font-size:.82rem;transition:.25s}
+.nav a:hover{color:var(--green);text-shadow:var(--glow)}
+.nav .spacer{flex:1}
+kbd{padding:2px 7px;border:1px solid var(--border);border-radius:6px;font-size:.7rem;color:var(--cyan);background:var(--bg-2)}
+.hero{padding:72px 0 40px;text-align:center}
+.glitch{font-size:clamp(2.2rem,7vw,4.2rem);font-weight:800;color:var(--text);position:relative;display:inline-block;letter-spacing:2px}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;inset:0;overflow:hidden}
+.glitch::before{color:var(--pink);animation:glitch1 2.8s infinite steps(2,end);clip-path:inset(0 0 55% 0)}
+.glitch::after{color:var(--cyan);animation:glitch2 2.8s infinite steps(2,end);clip-path:inset(55% 0 0 0)}
+@keyframes glitch1{0%,86%,100%{transform:none;opacity:0}88%{transform:translate(-3px,-2px);opacity:.9}92%{transform:translate(3px,1px);opacity:.8}}
+@keyframes glitch2{0%,86%,100%{transform:none;opacity:0}90%{transform:translate(2px,2px);opacity:.9}95%{transform:translate(-2px,-1px);opacity:.7}}
+.sub{color:var(--muted);margin-top:10px;font-size:clamp(.9rem,2.5vw,1.1rem)}
+.cursor{display:inline-block;width:.6em;height:1.05em;background:var(--green);margin-left:4px;animation:blink 1s steps(1) infinite;vertical-align:text-bottom}
+@keyframes blink{50%{opacity:0}}
+.badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.badge{border:1px solid var(--border);border-radius:999px;padding:6px 14px;font-size:.75rem;color:var(--cyan);background:var(--panel)}
+.badge b{color:var(--green)}
+section{margin-top:64px}
+h2.sec{font-size:1.15rem;color:var(--green);display:flex;align-items:center;gap:10px;margin-bottom:22px;letter-spacing:1px}
+h2.sec::before{content:attr(data-n);color:var(--pink);font-size:.85rem;border:1px solid var(--border);padding:2px 8px;border-radius:8px}
+h2.sec::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+.term{background:#05080d;border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 20px 60px rgba(0,0,0,.5),var(--glow);overflow:hidden}
+.term-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border)}
+.dot{width:12px;height:12px;border-radius:50%}
+.dot.r{background:#ff5f56}.dot.y{background:#ffbd2e}.dot.g{background:#27c93f}
+.term-title{margin-left:8px;font-size:.72rem;color:var(--muted)}
+.term-body{height:320px;overflow-y:auto;padding:14px 16px;font-size:.82rem}
+.line{white-space:pre-wrap;word-break:break-word;margin-bottom:2px}
+.prompt{color:var(--green)}.prompt .u{color:var(--pink)}.prompt .d{color:var(--muted)}
+.out-cmd{color:var(--cyan)}.out-info{color:var(--text)}.out-ok{color:var(--green)}.out-warn{color:var(--amber)}.out-err{color:var(--pink)}.out-dim{color:var(--muted)}
+.term-input{display:flex;align-items:center;gap:6px}
+.term-input input{flex:1;background:transparent;border:none;outline:none;color:var(--green);font:inherit;font-size:.82rem;caret-color:var(--green)}
+.term-input input::placeholder{color:#3d4a5c}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:.3s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-5px);border-color:var(--green);box-shadow:var(--glow)}
+.card h3{color:var(--green);font-size:1rem;margin-bottom:6px}
+.card .lang{font-size:.7rem;color:var(--pink);border:1px solid rgba(255,45,120,.3);padding:2px 8px;border-radius:6px}
+.card p{color:var(--muted);font-size:.8rem;margin-top:8px}
+.card a{color:var(--cyan);font-size:.78rem;text-decoration:none}
+.card a:hover{text-decoration:underline}
+.card .foot{margin-top:14px;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.7rem}
+.tag{font-size:.68rem;border:1px solid var(--border);padding:2px 8px;border-radius:6px;color:var(--cyan)}
+.skill{margin-bottom:16px}
+.skill .meta{display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:6px}
+.skill .meta b{color:var(--green)}
+.bar{height:8px;background:var(--bg-2);border:1px solid var(--border);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--green),var(--cyan));transition:width 1.2s cubic-bezier(.2,.7,.3,1)}
+.bar i.pink{background:linear-gradient(90deg,var(--pink),var(--purple))}
+.gauges{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.gauge{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center}
+.gauge .ring{width:110px;height:110px;margin:0 auto;position:relative}
+.gauge .ring svg{transform:rotate(-90deg)}
+.gauge .ring .num{position:absolute;inset:0;display:grid;place-items:center;font-size:1.3rem;font-weight:700;color:var(--green)}
+.gauge .lbl{color:var(--muted);font-size:.78rem;margin-top:8px}
+.gauge .hint{color:var(--muted);font-size:.66rem;margin-top:4px;opacity:.7}
+.ascii-wrap{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:22px;overflow-x:auto}
+.ascii{font-size:.72rem;color:var(--green);line-height:1.35}
+.ascii .k{color:var(--pink)}.ascii .v{color:var(--cyan)}
+.reveal{opacity:0;transform:translateY(26px);transition:.7s ease}
+.reveal.on{opacity:1;transform:none}
+footer{margin-top:70px;padding-top:24px;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:.75rem}
+footer a{color:var(--green);text-decoration:none}
+footer a:hover{text-shadow:var(--glow)}
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--bg-2);border:1px solid var(--green);color:var(--green);padding:10px 18px;border-radius:10px;font-size:.8rem;transition:.4s;z-index:99;box-shadow:var(--glow)}
+#toast.show{transform:translateX(-50%) translateY(0)}
+@media(max-width:640px){.nav a:not(.brand){display:none}.hero{padding:44px 0 20px}.ascii{font-size:.56rem}}
+</style>
 </head>
 <body>
-    <!-- جسيمات متحركة في الخلفية -->
-    <canvas id="particlesCanvas" class="particles-canvas"></canvas>
+<canvas id="matrix"></canvas>
+<header>
+  <nav class="nav">
+    <span class="brand">bodamiruSE</span>
+    <span class="spacer"></span>
+    <a href="#terminal">~terminal</a>
+    <a href="#projects">~/projects</a>
+    <a href="#skills">~/skills</a>
+    <a href="#sys">~/sys</a>
+    <a href="#about">~/whoami</a>
+    <kbd>Ctrl K</kbd>
+  </nav>
+</header>
+<div class="wrap">
+  <section class="hero">
+    <h1 class="glitch" data-text="bodamiruSE">bodamiruSE</h1>
+    <p class="sub">&gt; <span id="type"></span><span class="cursor"></span></p>
+    <div class="badges">
+      <span class="badge">&#127959;&#65039; <b>System Architect</b></span>
+      <span class="badge">&#128039; Arch + Hyprland</span>
+      <span class="badge">&#127870; Anime-powered</span>
+      <span class="badge">&#9000;&#65039; Terminal-first</span>
+    </div>
+  </section>
 
-    <!-- شريط التنقل -->
-    <nav class="navbar">
-        <div class="container nav-inner">
-            <a href="/" class="nav-logo">Bodamiru<span>SE</span></a>
+  <section id="terminal">
+    <h2 class="sec" data-n="01">// interactive_terminal - type 'help'</h2>
+    <div class="term">
+      <div class="term-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="term-title">bodamiruSE@arch: ~/www</span>
+      </div>
+      <div class="term-body" id="termBody"></div>
+      <div class="term-input" style="padding:0 16px 14px">
+        <span class="prompt">bodamiruSE@arch<span class="u">:~</span><span class="d">$</span></span>
+        <input id="termIn" type="text" placeholder="type a command... try 'help'" autocomplete="off" spellcheck="false" />
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="sec" data-n="02">// ./projects</h2>
+    <div class="grid">
+      <div class="card reveal">
+        <h3>my-first-.dotfiles <span class="lang">shell</span></h3>
+        <p>Personal Termux dev environment powered by Neovim, Fish, Tmux &amp; nnn.</p>
+        <a href="https://github.com/bodamiruSE/my-first-.dotfiles">&rarr; github.com/bodamiruSE/my-first-.dotfiles</a>
+        <div class="foot"><span class="tag">config</span><span>branch: development</span></div>
+      </div>
+      <div class="card reveal">
+        <h3>ram-monitor <span class="lang">python</span></h3>
+        <p>Lightweight RAM monitor for Android/Termux that alerts when memory is critically high.</p>
+        <a href="https://github.com/bodamiruSE/ram-monitor">&rarr; github.com/bodamiruSE/ram-monitor</a>
+        <div class="foot"><span class="tag">python</span><span>android / termux</span></div>
+      </div>
+      <div class="card reveal">
+        <h3>bodamiruSE.github.io <span class="lang">html</span></h3>
+        <p>Personal website &amp; public technical presence - this very page, shipped as a single file.</p>
+        <a href="https://bodamiruSE.github.io">&rarr; bodamiruSE.github.io</a>
+        <div class="foot"><span class="tag">html / css / js</span><span>github pages</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="sec" data-n="03">// ./skills</h2>
+    <div class="skill reveal"><div class="meta"><span>Linux / Arch / Hyprland</span><b data-p="95">95%</b></div><div class="bar"><i data-w="95%"></i></div></div>
+    <div class="skill reveal"><div class="meta"><span>Shell &amp; Terminal (fish, tmux, nvim)</span><b data-p="90">90%</b></div><div class="bar"><i data-w="90%"></i></div></div>
+    <div class="skill reveal"><div class="meta"><span>Python</span><b data-p="85">85%</b></div><div class="bar"><i data-w="85%"></i></div></div>
+    <div class="skill reveal"><div class="meta"><span>HTML / CSS / JavaScript</span><b data-p="82">82%</b></div><div class="bar pink"><i data-w="82%"></i></div></div>
+    <div class="skill reveal"><div class="meta"><span>Git &amp; GitHub</span><b data-p="90">90%</b></div><div class="bar"><i data-w="90%"></i></div></div>
+  </section>
+
+  <section id="sys">
+    <h2 class="sec" data-n="04">// ./sys - live simulation</h2>
+    <div class="gauges">
+      <div class="gauge reveal">
+        <div class="ring">
+          <svg viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="52" fill="none" stroke="#101a26" stroke-width="10"/>
+            <circle id="ringCpu" cx="60" cy="60" r="52" fill="none" stroke="url(#grad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7"/>
+            <defs><linearGradient id="grad"><stop offset="0%" stop-color="#00ff9c"/><stop offset="100%" stop-color="#22d3ee"/></linearGradient></defs>
+          </svg>
+          <div class="num"><span id="cpuVal">0</span>%</div>
         </div>
-    </nav>
-
-    <!-- القسم الرئيسي -->
-    <section class="hero" style="border-bottom: none;">
-        <div class="container">
-            <div class="hero-eyebrow">🚧 Site Status</div>
-            <h1>
-                <span class="typing-wrapper">
-                    <span id="typing-text"></span><span class="cursor">|</span>
-                </span>
-            </h1>
-            <p style="font-size: var(--text-lg); color: var(--color-text-secondary); max-width: 560px; margin: 0 auto var(--space-8);">
-                We're crafting something exceptional. Please check back soon.
-            </p>
-            <div style="display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap;">
-                <button class="btn btn-primary" disabled>Notify Me (Soon)</button>
-            </div>
+        <div class="lbl">CPU Load</div>
+        <div class="hint">simulated - js demo</div>
+      </div>
+      <div class="gauge reveal">
+        <div class="ring">
+          <svg viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="52" fill="none" stroke="#101a26" stroke-width="10"/>
+            <circle id="ringRam" cx="60" cy="60" r="52" fill="none" stroke="url(#grad2)" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7"/>
+            <defs><linearGradient id="grad2"><stop offset="0%" stop-color="#ff2d78"/><stop offset="100%" stop-color="#a78bfa"/></linearGradient></defs>
+          </svg>
+          <div class="num"><span id="ramVal">0</span>%</div>
         </div>
-    </section>
+        <div class="lbl">RAM Usage</div>
+        <div class="hint">like ram-monitor &#9889;</div>
+      </div>
+    </div>
+  </section>
 
-    <!-- تذييل مع الاعتذار وواتساب -->
-    <footer class="footer" style="border-top: none;">
-        <div class="container">
-            <div class="footer-inner" style="flex-direction: column; align-items: center; text-align: center;">
-                <div class="message-box">
-                    <p style="margin-bottom: var(--space-4);">
-                        Dear visitor, we sincerely apologize for the inconvenience. Our website is currently undergoing maintenance to serve you better. Thank you for your patience and understanding.
-                    </p>
-                    <strong style="color: var(--color-accent); font-size: var(--text-base);">3bdo_Amir</strong>
-                </div>
-                <a href="https://wa.me/201278716881?text=Hello%2C%20I%20noticed%20your%20site%20is%20under%20maintenance." 
-                   class="btn btn-outline whatsapp-link" 
-                   target="_blank" 
-                   rel="noopener noreferrer">
-                   🍀 WhatsApp 🍀
-                </a>
-                <p style="margin-top: var(--space-4); font-size: var(--text-xs); color: var(--color-text-tertiary);">
-                    BodamiruSE &copy; 2026
-                </p>
-            </div>
-        </div>
-    </footer>
+  <section id="about">
+    <h2 class="sec" data-n="05">// $ whoami</h2>
+    <div class="ascii-wrap reveal"><pre class="ascii" id="ascii"></pre></div>
+  </section>
 
-    <!-- ==================== SCRIPTS ==================== -->
-    <script>
-        (function() {
-            // --- تأثير الكتابة بلغات متعددة ---
-            const phrases = [
-                "Under Maintenance",        // English
-                "تحت الصيانة",              // Arabic
-                "En maintenance",           // French
-                "En mantenimiento",         // Spanish
-                "Wartungsarbeiten",         // German
-                "In manutenzione",          // Italian
-                "Em manutenção",            // Portuguese
-                "Техническое обслуживание", // Russian
-                "维护中",                   // Chinese Simplified
-                "メンテナンス中",            // Japanese
-                "점검 중",                  // Korean
-                "रखरखाव में",              // Hindi
-                "Bakımda",                  // Turkish
-                "In onderhoud",             // Dutch
-                "Under underhåll",          // Swedish
-                "W trakcie konserwacji",    // Polish
-                "Manteniment",              // Catalan
-                "Pemeliharaan",             // Indonesian
-                "Bảo trì",                  // Vietnamese
-                "Pagpapanatili"             // Filipino
-            ];
-
-            const typingEl = document.getElementById('typing-text');
-            let phraseIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            const typingSpeed = 100;   // سرعة الكتابة
-            const deletingSpeed = 50;  // سرعة المسح
-            const pauseBetween = 2000; // توقف بعد اكتمال الجملة
-
-            function type() {
-                const current = phrases[phraseIndex];
-                if (!isDeleting) {
-                    typingEl.textContent = current.substring(0, charIndex + 1);
-                    charIndex++;
-                    if (charIndex === current.length) {
-                        isDeleting = true;
-                        setTimeout(type, pauseBetween);
-                        return;
-                    }
-                } else {
-                    typingEl.textContent = current.substring(0, charIndex - 1);
-                    charIndex--;
-                    if (charIndex === 0) {
-                        isDeleting = false;
-                        phraseIndex = (phraseIndex + 1) % phrases.length;
-                        setTimeout(type, 500);
-                        return;
-                    }
-                }
-                setTimeout(type, isDeleting ? deletingSpeed : typingSpeed);
-            }
-            type();
-
-            // --- تأثير الجسيمات في الخلفية ---
-            const canvas = document.getElementById('particlesCanvas');
-            if (canvas) {
-                const ctx = canvas.getContext('2d');
-                let width, height;
-                function resize() {
-                    width = canvas.width = window.innerWidth;
-                    height = canvas.height = window.innerHeight;
-                }
-                window.addEventListener('resize', resize);
-                resize();
-
-                const particles = [];
-                const particleCount = 60;
-                class Particle {
-                    constructor() {
-                        this.x = Math.random() * width;
-                        this.y = Math.random() * height;
-                        this.size = Math.random() * 2 + 0.5;
-                        this.speedX = (Math.random() - 0.5) * 0.4;
-                        this.speedY = (Math.random() - 0.5) * 0.4;
-                        // تدرج لوني بين البنفسجي والأزرق
-                        const r = 100 + Math.floor(Math.random() * 100);
-                        const g = 100 + Math.floor(Math.random() * 100);
-                        const b = 200 + Math.floor(Math.random() * 55);
-                        this.color = `rgba(${r}, ${g}, ${b}, 0.5)`;
-                    }
-                    update() {
-                        this.x += this.speedX;
-                        this.y += this.speedY;
-                        if (this.x > width) this.x = 0;
-                        else if (this.x < 0) this.x = width;
-                        if (this.y > height) this.y = 0;
-                        else if (this.y < 0) this.y = height;
-                    }
-                    draw() {
-                        ctx.fillStyle = this.color;
-                        ctx.beginPath();
-                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                        ctx.fill();
-                    }
-                }
-                for (let i = 0; i < particleCount; i++) {
-                    particles.push(new Particle());
-                }
-                function animate() {
-                    ctx.clearRect(0, 0, width, height);
-                    particles.forEach(p => {
-                        p.update();
-                        p.draw();
-                    });
-                    requestAnimationFrame(animate);
-                }
-                animate();
-            }
-        })();
-    </script>
+  <footer>
+    <p>designed &amp; built by <a href="https://github.com/bodamiruSE">bodamiruSE</a> - single-file HTML, zero dependencies.</p>
+    <p style="margin-top:6px">&copy; 2026 - powered by Arch Linux &amp; anime</p>
+  </footer>
+</div>
+<div id="toast">copied</div>
+<script>
+/* ===== MATRIX RAIN ===== */
+var canvas=document.getElementById('matrix'),ctx=canvas.getContext('2d');
+var glyphs='01<>/|*+#$%&@ABCDEF';
+var cols,drops;
+function size(){canvas.width=innerWidth;canvas.height=innerHeight;cols=Math.floor(canvas.width/14);drops=Array(cols).fill(1)}
+size();addEventListener('resize',size);
+function rain(){ctx.fillStyle='rgba(6,9,15,.10)';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.font='13px monospace';for(var i=0;i<cols;i++){ctx.fillStyle=Math.random()>.975?'#ffffff':'#00ff9c';ctx.fillText(glyphs[Math.floor(Math.random()*glyphs.length)],i*14,drops[i]*14);if(drops[i]*14>canvas.height&&Math.random()>.975)drops[i]=0;drops[i]++}requestAnimationFrame(rain)}
+rain();
+/* ===== TYPEWRITER ===== */
+var roles=['system architect','Arch + Hyprland wizard','terminal-first developer','anime-powered coder'];
+var ri=0,ci=0,del=false;
+function type(){var el=document.getElementById('type');var word=roles[ri];el.textContent=del?word.slice(0,ci--):word.slice(0,ci++);var t=del?40:80;if(!del&&ci===word.length){t=1600;del=true}if(del&&ci===0){del=false;ri=(ri+1)%roles.length;t=400}setTimeout(type,t)}
+type();
+/* ===== INTERACTIVE TERMINAL ===== */
+var termBody=document.getElementById('termBody'),termIn=document.getElementById('termIn');
+var asciiArt='        XXXXXX           bodamiruSE@arch\n      XXXXXXXXXX         -----------------\n    XXXXXXXXXXXXXX       OS    :  Arch Linux x86_64\n  XXXXXXXXXXXXXXXXXX     WM    :  Hyprland (wayland)\nXXXXXXXXXXXXXXXXXXXXX    Shell :  fish\n  XXXXXXXXXXXXXXXXXX     Editor:  Neovim\n    XXXXXXXXXXXXXX       Files :  nnn\n      XXXXXXXXXX         Theme :  catppuccin\n        XXXXXX           Vibe  :  anime-powered';
+document.getElementById('ascii').textContent=asciiArt;
+function print(html,cls){var d=document.createElement('div');d.className='line '+(cls||'out-info');d.innerHTML=html;termBody.appendChild(d);termBody.scrollTop=termBody.scrollHeight}
+function escapeHtml(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function printPrompt(){var d=document.createElement('div');d.className='line prompt';d.innerHTML='bodamiruSE@arch<span class="u">:~</span><span class="d">$</span> '+escapeHtml(termIn.value);termBody.appendChild(d);termBody.scrollTop=termBody.scrollHeight}
+var CMDS={
+ help:function(){print('available commands:<br><span class="out-ok">help</span> . <span class="out-ok">whoami</span> . <span class="out-ok">neofetch</span> . <span class="out-ok">projects</span> . <span class="out-ok">ram</span> . <span class="out-ok">skills</span> . <span class="out-ok">social</span> . <span class="out-ok">date</span> . <span class="out-ok">echo</span> &lt;text&gt; . <span class="out-ok">clear</span> . <span class="out-ok">sudo</span> . <span class="out-ok">exit</span>')},
+ whoami:function(){print('Anime-powered system architect. Builder of terminal workflows. Arch + Hyprland by heart.','out-info')},
+ neofetch:function(){print(asciiArt.replace(/X/g,' '),'out-ok')},
+ projects:function(){print('<span class="out-ok">my-first-.dotfiles</span>   Termux dev env (nvim + fish + tmux + nnn)<br><span class="out-ok">ram-monitor</span>        Python RAM watcher for Android/Termux<br><span class="out-ok">bodamiruSE.github.io</span> personal site - this page')},
+ ram:function(){var r=Math.floor(30+Math.random()*60);print('used '+r+'%   cached 8%   free '+(100-r-8)+'%',r>80?'out-warn':'out-ok');print('status: '+(r>80?'high - check ram-monitor!':'all good'),r>80?'out-warn':'out-ok')},
+ skills:function(){print('linux <span class="out-ok">95%</span> . shell <span class="out-ok">90%</span> . python <span class="out-ok">85%</span> . web <span class="out-ok">82%</span> . git <span class="out-ok">90%</span>')},
+ social:function(){print('github - https://github.com/bodamiruSE')},
+ date:function(){print(new Date().toString(),'out-dim')},
+ echo:function(a){print(a||'','out-info')},
+ sudo:function(){print('nice try. you are not in the sudoers list.','out-err')},
+ exit:function(){print('you can never exit the terminal. it is part of you now.','out-warn')}
+};
+function run(cmd){var parts=cmd.trim().split(/\s+/);var c=parts[0]||'';var arg=parts.slice(1).join(' ');if(!cmd.trim())return;printPrompt();if(CMDS[c])CMDS[c](arg);else if(c==='clear'){termBody.innerHTML='';return}else print('command not found: '+escapeHtml(c)+' - try <span class="out-ok">help</span>','out-err')}
+termIn.addEventListener('keydown',function(e){if(e.key==='Enter'){run(termIn.value);termIn.value=''}});
+window.addEventListener('keydown',function(e){if(e.key==='k'&&(e.ctrlKey||e.metaKey)){e.preventDefault();termIn.focus();termIn.value='';termIn.select()}if(e.key==='Escape')termIn.blur()});
+/* ===== REVEAL ON SCROLL ===== */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');e.target.querySelectorAll('i[data-w]').forEach(function(i){i.style.width=i.dataset.w});io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+/* ===== LIVE GAUGES ===== */
+var RING=326.7,cpuVal=document.getElementById('cpuVal'),ramVal=document.getElementById('ramVal'),ringCpu=document.getElementById('ringCpu'),ringRam=document.getElementById('ringRam');
+function setGauge(ring,val,el){el.textContent=val;ring.style.strokeDashoffset=RING-(RING*val/100)}
+setInterval(function(){setGauge(ringCpu,Math.floor(15+Math.random()*70),cpuVal);setGauge(ringRam,Math.floor(30+Math.random()*55),ramVal)},1600);
+/* ===== TOAST ===== */
+var toast=document.getElementById('toast');
+function showToast(t){toast.textContent=t||'copied';toast.classList.add('show');setTimeout(function(){toast.classList.remove('show')},1600)}
+document.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(e){if(a.href&&a.href.indexOf(location.origin)===0){e.preventDefault();if(navigator.clipboard){navigator.clipboard.writeText(a.href).then(function(){showToast('link copied')})}}})});
+</script>
 </body>
 </html>
